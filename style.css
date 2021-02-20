@@ -1,0 +1,39 @@
+html, body {
+  font: 24px normal Arial, Helvetica, sans-serif;
+}
+
+#header-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#question-section {
+  /* border: 3px solid rgb(0, 0, 0); */
+  width: 60%;
+  margin: 20px auto;
+}
+
+main {
+  text-align: center;
+}
+
+#essay-area {
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+  width: 60%;
+  height: 700px;
+  padding: 25px;
+  font: 22px normal Arial, Helvetica, sans-serif;
+  box-shadow: 0 0 5px #343435;
+}
+
+#website-name {
+  text-align: center;
+}
+
+#timer {
+  position: absolute;
+  top: 15px;
+  right: 20%;
+}
