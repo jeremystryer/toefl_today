@@ -15,9 +15,23 @@
     <p id="timer">Countdown Timer</p>
   </header>
   <section id="question-section"></section>
+
   <main>
+    <section id="sidebar">
+      <button id="new-question-btn">New Question</button>
+      <!-- <button>Word Counter</button>
+      <button>Grammar Checker</button>
+      <button>Vocabulary Checker</button> -->
+    </section>
     <textarea id="essay-area"></textarea>
   </main>
+
+
+  <div id="modal">
+    <div id="modal-content">
+      <p>You have 30 minutes. You may begin writing once this box closes.</p>
+    </div>
+  </div>
 
   <script id="question-template" type="text/x-handlebars">
     <p>{{question}}</p>
