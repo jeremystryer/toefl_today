@@ -1,0 +1,33 @@
+html, body {
+  font: 24px normal Arial, Helvetica, sans-serif;
+  background-color: rgb(1, 1, 33);
+  color: white;
+}
+
+main {
+  left: 0;
+  margin-top: -100px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+#slogan {
+  padding: 0 0 20px;
+}
+
+.start:hover {
+  cursor: pointer;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 25px;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  background-color: rgb(238, 238, 238);
+  color: rgb(1, 1, 33);
+  text-decoration: none;
+}

@@ -1,0 +1,44 @@
+html, body {
+  font: 24px normal Arial, Helvetica, sans-serif;
+}
+
+main {
+  box-sizing: border-box;
+  border: 5px solid darkgray;
+  padding: 30px;
+}
+
+#flex-container {
+  /* display: flex; */
+  justify-content: center;
+}
+
+#question {
+  width: 70%;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+#instructions {
+  width: 70%;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+textarea {
+  box-sizing: border-box;
+  resize: none;
+  width: 70%;
+  height: 700px;
+  font-size: 0.75em;
+  display: block;
+  margin: 0 auto;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+#timer {
+  float: right;
+}
