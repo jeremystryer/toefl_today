@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     init() {
       this.selectQuestion();
       this.bind();
-      setTimeout(this.startTimer, 5000);
+      setTimeout(this.startTimer.bind(this), 1000);
     }
 
     startTimer(){      
-      let seconds = 1800;
+      let seconds = 3;
       let countDiv = document.getElementById("timer");
       const countDown = setInterval(() => {
                         secondsPass();
@@ -28,16 +28,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (min < 10) {
           min = '0' + min;
         }
-        
+      
+      let textArea = document.querySelector("textarea");
+      textArea.disabled = false;
+
       countDiv.innerHTML = min + ":" + remainingSeconds;
         
         if (seconds > 0) {
           seconds = seconds - 1;
         } else {
           clearInterval(countDown);
-          countDiv.innerHTML = 'Time Has Ended';
+          textArea.disabled = true;
+          this.showTimeEndedModal();
         }
       }
+    }
+
+    showTimeEndedModal() {
+      let modal = document.querySelector("#modal");
+      modal.style.display = "block";
     }
 
     bind() {
