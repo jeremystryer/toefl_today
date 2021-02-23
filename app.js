@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     init() {
       this.selectQuestion();
       this.bind();
-      setTimeout(this.startTimer.bind(this), 1000);
+      // setTimeout(this.startTimer.bind(this), 5000);
     }
 
     startTimer(){      
@@ -46,7 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showTimeEndedModal() {
       let modal = document.querySelector("#modal");
+      let reviewBtn = document.querySelector("#review-button");
       modal.style.display = "block";
+      
+      reviewBtn.addEventListener('click', () => {
+        
+      });
+
     }
 
     bind() {
