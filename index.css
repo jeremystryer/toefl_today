@@ -22,7 +22,10 @@ main {
 }
 
 .button {
-  display: inline-block;
+  display: block;
+  width: 20%;
+  text-align: center;
+  margin: 20px auto;
   padding: 5px 25px;
   border-radius: 5px;
   outline: none;
