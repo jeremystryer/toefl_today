@@ -10,26 +10,36 @@
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
 <body>
-  <main>
-    <p id="instructions">You have 5 seconds to read the below question. Then the 30 minute timer will begin.</p>
-    <p id="question"></p>
+  <header>
+    <h1 id="name">TOEFL Today</h1>
+    <p id="slogan">The Independent Essay</p>
+  </header>
 
-    <div id="options"> </div>
-    
-    <textarea disabled></textarea>
-      
-    <div id="timer">30:00</div>
-  </main>
+  <div id="flex-container">
+    <section id="sidebar">
+      <button id="get-new-question-button">New Question</button>
+      <button>Read Sample Essay</button>
+      <button id="check-word-count-button">Check Word Count</button>
+    </section>
 
-  <div id="modal">
-    <div id="modal-content">
-      <p>Time has ended!</p>
-      <button id="review-button">Review Your Essay</button>
+    <main>
+      <p id="instructions">You have 5 seconds to read the below question. Then the 30 minute timer will begin.</p>
+      <p id="question"></p>
+      <div id="options"> </div>
+      <textarea placeholder="Write your essay here..." disabled></textarea>
+      <div id="timer">30:00</div>
+    </main>
+
+    <div id="modal">
+      <div id="modal-content">
+        <p>Time has ended!</p>
+        <button id="review-button">Review Your Essay</button>
+      </div>
     </div>
-  </div>
 
-  <script id="question-template" type="text/x-handlebars">
-    <p>{{question}}</p>
-  </script>
+    <script id="question-template" type="text/x-handlebars">
+      <p>{{question}}</p>
+    </script>
+  </div>
 </body>
 </html>
