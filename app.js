@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     init() {
       this.selectQuestion();
       this.bind();
-      // setTimeout(this.startTimer.bind(this), 5000);
+      setTimeout(this.startTimer.bind(this), 1);
     }
 
     startTimer(){      
-      let seconds = 3;
+      let seconds = 1800;
       let countDiv = document.getElementById("timer");
       const countDown = setInterval(() => {
                         secondsPass();
@@ -57,10 +57,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bind() {
       this.setTab();
+      this.checkWordCount();
+      this.getNewQuestion();
+    }
+
+    checkWordCount() {
+      let checkWordCountBtn = document.querySelector("#check-word-count-button");
+      
+      checkWordCountBtn.addEventListener('click', () => {
+        let text = document.querySelector("textarea").value;
+        let numWords = text.match(/(\w|')*(\w|\-)+/gi).length;
+
+        alert(numWords);
+      });
+    }
+
+    getNewQuestion() {
+      let getNewQuestionBtn = document.querySelector("#get-new-question-button");
+
+      getNewQuestionBtn.addEventListener('click', () => {
+
+      });
     }
 
     setTab() {
-      document.querySelector('textarea').addEventListener('keydown', function(e) {
+      let textArea = document.querySelector('textarea');
+
+      textArea.addEventListener('keydown', function(e) {
         if (e.key == 'Tab') {
           e.preventDefault();
           var start = this.selectionStart;
