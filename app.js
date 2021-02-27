@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addEventListeners() {
       let startBtn = document.querySelector(".start");
+      let newQuestionBtn = document.querySelector(".new-question");
 
       startBtn.addEventListener("click", () => {
         // let modalStart = document.querySelector("#modal-start");
@@ -28,28 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         this.essay = new Essay();
         setTimeout(this.essay.startTimer.bind(this), 5000);
       });
+
+      newQuestionBtn.addEventListener("click", () => {
+        this.essay = new Essay();
+      });
     }
-
-    // checkWordCount() {
-    //   let checkWordCountBtn = document.querySelector("#check-word-count-button");
-      
-    //   checkWordCountBtn.addEventListener('click', () => {
-    //     let text = document.querySelector("textarea").value;
-    //     let numWords = text.match(/(\w|')*(\w|\-)+/gi).length;
-
-    //     alert(numWords);
-    //   });
-    // }
-
-    // getNewQuestion() {
-    //   let getNewQuestionBtn = document.querySelector("#get-new-question-button");
-
-    //   getNewQuestionBtn.addEventListener('click', () => {
-
-    //   });
-    // }
-    
-
   }
 
   class Essay {
@@ -60,6 +44,27 @@ document.addEventListener('DOMContentLoaded', () => {
     init() {
       this.selectQuestion();
       this.setTab();
+      this.addEventListeners();
+    }
+
+    addEventListeners() {
+      this.checkWordCount();
+    }
+
+    checkWordCount() {
+      let checkWordCountBtn = document.querySelector(".word-count");
+      
+      checkWordCountBtn.addEventListener('click', () => {
+        let essayArea = document.querySelector("#essay-area");
+        let text = essayArea.textContent;    
+        let numWords = text.match(/(\w|')*(\w|\-)+/gi);
+
+        if (!numWords) {
+          numWords = "";
+        }
+
+        alert(numWords.length);
+      });
     }
 
     insertQuestion(question) {
