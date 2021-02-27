@@ -85,6 +85,16 @@ main {
   outline: none;
 }
 
+#timer {
+  display: none;
+  background-color: rgb(255, 251, 251);
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0.5%;
+  width: 30%;
+}
+
 #modal-start {
   position: fixed;
   left: 0;

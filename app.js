@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // let modalStart = document.querySelector("#modal-start");
         // modalStart.style.display = "none";
         this.essay = new Essay();
-        // setTimeout(this.essay.startTimer.bind(this), 1);
+        setTimeout(this.essay.startTimer.bind(this), 5000);
       });
     }
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startEssay(question) {
       this.insertQuestion(question);
-      this.allowTyping();
+      // this.allowTyping();
     }
 
     removeInstructions() {
@@ -121,25 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-     
-      // essayArea.addEventListener('keydown', function(e) {
-      //   if (e.key == 'Tab') {
-      //     e.preventDefault();
-      //     var start = this.selectionStart;
-      //     var end = this.selectionEnd;
-      
-      //     this.value = this.value.substring(0, start) +
-      //       "\t" + this.value.substring(end);
-      
-      //     this.selectionStart =
-      //       this.selectionEnd = start + 1;
-      //   }
-      // });
-    // }
     
     startTimer() {      
       let seconds = 1800;
       let countDiv = document.getElementById("timer");
+      timer.style.display = "block";
+      this.essay.allowTyping();
       const countDown = setInterval(() => {
                         secondsPass();
                       }, 1000);
