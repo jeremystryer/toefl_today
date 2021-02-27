@@ -67,6 +67,12 @@ main {
   /* margin: 0 auto; */
 }
 
+#options {
+  display: flex;
+  justify-content: space-evenly;
+  visibility: hidden;
+}
+
 .button:focus {
   outline: none;
 }
@@ -85,14 +91,19 @@ main {
   outline: none;
 }
 
+.editable:empty:before {
+  content: attr(data-placeholder);
+}
+
 #timer {
-  display: none;
+  /* visibility: hidden; */
   background-color: rgb(255, 251, 251);
   border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   padding: 0.5%;
   width: 30%;
+  height: 30px;
 }
 
 #modal-start {
