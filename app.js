@@ -72,11 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
     allowTyping() {
       let essayArea = document.querySelector("#essay-area");
       essayArea.setAttribute("contenteditable", "true");
+      essayArea.setAttribute("data-placeholder", "Edit");
     }
 
     startEssay(question) {
       this.insertQuestion(question);
-      // this.allowTyping();
     }
 
     removeInstructions() {
@@ -125,7 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
     startTimer() {      
       let seconds = 1800;
       let countDiv = document.getElementById("timer");
-      timer.style.display = "block";
+      // timer.style.visibility = "visible";
+      let options = document.querySelector("#options");
+      options.style.visibility = "visible";
       this.essay.allowTyping();
       const countDown = setInterval(() => {
                         secondsPass();
