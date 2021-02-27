@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
       let newQuestionBtn = document.querySelector(".new-question");
 
       startBtn.addEventListener("click", () => {
-        // let modalStart = document.querySelector("#modal-start");
-        // modalStart.style.display = "none";
         this.essay = new Essay();
         setTimeout(this.essay.startTimer.bind(this), 5000);
       });
 
       newQuestionBtn.addEventListener("click", () => {
+        this.essay.resetTimer();
         this.essay = new Essay();
+        setTimeout(this.essay.startTimer.bind(this), 5000);
       });
     }
   }
@@ -49,6 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addEventListeners() {
       this.checkWordCount();
+    }
+
+    resetTimer() {
+      let countDiv = document.getElementById("timer");
+      
     }
 
     checkWordCount() {
@@ -127,12 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    startTimer() {      
+    startTimer() {     
       let seconds = 1800;
       let countDiv = document.getElementById("timer");
-      // timer.style.visibility = "visible";
       let optionsContainer = document.querySelector("#options");
-      // options.style.visibility = "visible";
       let options = [...optionsContainer.children];
 
       options.forEach(option => option.disabled = false);
@@ -153,9 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (min < 10) {
           min = '0' + min;
         }
-      
-      // let textArea = document.querySelector("textarea");
-      // textArea.disabled = false;
 
       countDiv.innerHTML = min + ":" + remainingSeconds;
         
@@ -163,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
           seconds = seconds - 1;
         } else {
           clearInterval(countDown);
-          textArea.disabled = true;
           this.showTimeEndedModal();
         }
       }
