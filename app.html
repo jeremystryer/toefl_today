@@ -11,27 +11,39 @@
 </head>
 <body>
   <header>
-    <h1 id="name">TOEFL Today</h1>
-    <p id="slogan">The Independent Essay</p>
+    <!-- <h1 id="name">TOEFL Today</h1> -->
   </header>
-
-  <div id="flex-container">
-    <section id="sidebar">
-      <button id="get-new-question-button">New Question</button>
-      <button>Read Sample Essay</button>
-      <button id="check-word-count-button">Check Word Count</button>
-    </section>
-
     <main>
-      <p id="instructions">You have 5 seconds to read the below question. Then the 30 minute timer will begin.</p>
-      <p id="question"></p>
-      <div id="options"> </div>
-      <textarea placeholder="Write your essay here..." disabled></textarea>
-      <div id="timer">30:00</div>
+      <div id="question-container">
+        <h1 id="question">TOEFL Today</h1>
+      </div>
+      <div id="essay-area" role="textbox" contenteditable>
+        <div class="instructions">
+          <p>Here is how it works:</p>
+          <p>1. Get a question.</p>
+          <p>2. You have 5 seconds to read the question.</p>
+          <p>3. The 30 minute timer begins.</p>
+          <p>4. Review your essay.</p> 
+          <button class="start button">Start Now</button>   
+        </div>       
+      </div>
+
+      <!-- <textarea id="essay-area"></textarea> -->
+
+          
+      <!-- <div id="timer">30:00</div> -->
     </main>
 
-    <div id="modal">
-      <div id="modal-content">
+    <div id="modal-start">
+      <div id="modal-content-start">
+        <p>TOEFL Today</p>
+        <p>Practice the Independent Essay</p>
+        <button id="start-button">Start</button>
+      </div>
+    </div>
+
+    <div id="modal-review">
+      <div id="modal-content-review">
         <p>Time has ended!</p>
         <button id="review-button">Review Your Essay</button>
       </div>
