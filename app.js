@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let startBtn = document.querySelector(".start");
 
       startBtn.addEventListener("click", () => {
-        let modalStart = document.querySelector("#modal-start");
-        modalStart.style.display = "none";
+        // let modalStart = document.querySelector("#modal-start");
+        // modalStart.style.display = "none";
         this.essay = new Essay();
         // setTimeout(this.essay.startTimer.bind(this), 1);
       });
@@ -66,13 +66,31 @@ document.addEventListener('DOMContentLoaded', () => {
       let questionContainer = document.querySelector("#question-container");
       this.processTemplates();
       questionContainer.innerHTML = this.templates["question-template"]({question});
-      // debugger;
+      this.removeInstructions();
+    }
+
+    allowTyping() {
+      let essayArea = document.querySelector("#essay-area");
+      essayArea.setAttribute("contenteditable", "true");
+    }
+
+    startEssay(question) {
+      this.insertQuestion(question);
+      this.allowTyping();
+    }
+
+    removeInstructions() {
+      let essayArea = document.querySelector("#essay-area");
+      let essayAreaHeight = essayArea.offsetHeight;
+      essayArea.innerHTML = "";
+      essayArea.style.minHeight = essayAreaHeight + "px";
     }
 
     selectQuestion() {
       fetch("./test-questions.json")
       .then(response => response.json())
-      .then(json => this.insertQuestion(Utilities.getRandom(json.questions)));
+      // .then(json => this.insertQuestion(Utilities.getRandom(json.questions)));
+      .then(json => this.startEssay(Utilities.getRandom(json.questions)));
     }
 
     processTemplates() {
@@ -86,22 +104,40 @@ document.addEventListener('DOMContentLoaded', () => {
     setTab() {
       let essayArea = document.querySelector("#essay-area");
 
-      essayArea.addEventListener('keydown', function(e) {
-        if (e.key == 'Tab') {
+      essayArea.addEventListener("keydown", function(e) {
+        if (e.keyCode === 9) {
           e.preventDefault();
-          var start = this.selectionStart;
-          var end = this.selectionEnd;
-      
-          this.value = this.value.substring(0, start) +
-            "\t" + this.value.substring(end);
-      
-          this.selectionStart =
-            this.selectionEnd = start + 1;
+          var doc = e.target.ownerDocument.defaultView;
+          var sel = doc.getSelection();
+          var range = sel.getRangeAt(0);
+  
+          var tabNode = document.createTextNode("\u00a0\u00a0\u00a0\u00a0");
+          range.insertNode(tabNode);
+  
+          range.setStartAfter(tabNode);
+          range.setEndAfter(tabNode); 
+          sel.removeAllRanges();
+          sel.addRange(range);
         }
       });
     }
+     
+      // essayArea.addEventListener('keydown', function(e) {
+      //   if (e.key == 'Tab') {
+      //     e.preventDefault();
+      //     var start = this.selectionStart;
+      //     var end = this.selectionEnd;
+      
+      //     this.value = this.value.substring(0, start) +
+      //       "\t" + this.value.substring(end);
+      
+      //     this.selectionStart =
+      //       this.selectionEnd = start + 1;
+      //   }
+      // });
+    // }
     
-    startTimer(){      
+    startTimer() {      
       let seconds = 1800;
       let countDiv = document.getElementById("timer");
       const countDown = setInterval(() => {
