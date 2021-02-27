@@ -131,8 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
       let seconds = 1800;
       let countDiv = document.getElementById("timer");
       // timer.style.visibility = "visible";
-      let options = document.querySelector("#options");
-      options.style.visibility = "visible";
+      let optionsContainer = document.querySelector("#options");
+      // options.style.visibility = "visible";
+      let options = [...optionsContainer.children];
+
+      options.forEach(option => option.disabled = false);
+
       this.essay.allowTyping();
       const countDown = setInterval(() => {
                         secondsPass();
