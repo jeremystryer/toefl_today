@@ -12,10 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
       let modalReview = document.querySelector("#modal-review");
       let reviewBtn = document.querySelector("#review-button");
       modalReview.style.display = "block";
+      this.essay.preventTyping();
       
-      reviewBtn.addEventListener('click', () => {
-        
-      });
 
     }
 
@@ -25,14 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       startBtn.addEventListener("click", () => {
         this.essay = new Essay();
-        setTimeout(this.essay.startTimer.bind(this), 5000);
+        // setTimeout(this.essay.startTimer.bind(this), 5000);
+        setTimeout(this.essay.startTimer.bind(this), 1000);
       });
 
-      newQuestionBtn.addEventListener("click", () => {
-        this.essay.resetTimer();
-        this.essay = new Essay();
-        setTimeout(this.essay.startTimer.bind(this), 5000);
-      });
+      // newQuestionBtn.addEventListener("click", () => {
+      //   this.essay.resetTimer();
+      //   this.essay = new Essay();
+      //   setTimeout(this.essay.startTimer.bind(this), 5000);
+      // });
     }
   }
 
@@ -51,10 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
       this.checkWordCount();
     }
 
-    resetTimer() {
-      let countDiv = document.getElementById("timer");
-      
+    preventTyping() {
+      let essayArea = document.querySelector("#essay-area");
+      essayArea.setAttribute("contenteditable", "false");
     }
+
+    // resetTimer() {
+    //   let countDiv = document.getElementById("timer");
+      
+    // }
 
     checkWordCount() {
       let checkWordCountBtn = document.querySelector(".word-count");
@@ -85,10 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
       essayArea.setAttribute("data-placeholder", "Edit");
     }
 
-    startEssay(question) {
-      this.insertQuestion(question);
-    }
-
     removeInstructions() {
       let essayArea = document.querySelector("#essay-area");
       let essayAreaHeight = essayArea.offsetHeight;
@@ -99,8 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selectQuestion() {
       fetch("./test-questions.json")
       .then(response => response.json())
-      // .then(json => this.insertQuestion(Utilities.getRandom(json.questions)));
-      .then(json => this.startEssay(Utilities.getRandom(json.questions)));
+      .then(json => this.insertQuestion(Utilities.getRandom(json.questions)));
     }
 
     processTemplates() {
@@ -133,7 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     startTimer() {     
-      let seconds = 1800;
+      // let seconds = 1800;
+      let seconds = 5;
       let countDiv = document.getElementById("timer");
       let optionsContainer = document.querySelector("#options");
       let options = [...optionsContainer.children];
